@@ -9,13 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            CompleteView()
+                .tabItem() {
+                    Image(systemName: "checkmark.circle")
+                    Text("Completos")
+                }
+            
+            ProgressView()
+                .badge(1)
+                .tabItem() {
+                    Image(systemName: "figure.walk")
+                    Text("Andamento")
+                }
+            
+            WithdrawalView()
+                .tabItem() {
+                    Image(systemName: "x.circle")
+                    Text("Desistência")
+                }
+            
         }
-        .padding()
     }
 }
 
