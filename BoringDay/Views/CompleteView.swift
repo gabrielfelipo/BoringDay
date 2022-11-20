@@ -22,7 +22,7 @@ struct CompleteView: View {
                             
                             Text(activities[index])
                             
-                            Text("Você completou em: \(completeTime[index])")
+                            Text("Você completou em: \(completeTime[index])").foregroundColor(.gray)
                             
                             Spacer().frame(height: 8)
                         }.frame(width: UIScreen.screenWidth)

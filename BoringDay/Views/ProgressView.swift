@@ -62,7 +62,7 @@ struct ProgressView: View {
                                 Text(activities[index])
                                 let dif = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dates[index], to: Date.now)
                                 var duringTime = "\(dif.day ?? 0) dias \(dif.hour ?? 0) horas \(dif.minute ?? 0) minutos \(dif.second ?? 0) segundos"
-                                Text(duringTime)
+                                Text(duringTime).foregroundColor(.gray)
                                     .onReceive(timer) {_ in
                                         let dif = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dates[index], to: Date.now)
                                         duringTime = "\(dif.day ?? 0) dias \(dif.hour ?? 0) horas \(dif.minute ?? 0) minutos \(dif.second ?? 0) segundos"

@@ -22,7 +22,7 @@ struct WithdrawalView: View {
                             
                             Text(activities[index])
                             
-                            Text("Você desistiu em: \(withdrawalTime[index])")
+                            Text("Você desistiu em: \(withdrawalTime[index])").foregroundColor(.gray)
                             
                             Spacer().frame(height: 8)
                         }.frame(width: UIScreen.screenWidth)
