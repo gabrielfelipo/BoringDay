@@ -19,10 +19,13 @@ struct ProgressView: View {
     @Binding var completeTime: [String]
     @Binding var completeActivities: [String]
     @Binding var withdrawalActivities: [String]
+    @State var timeCount = 0
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     var body: some View{
         ZStack{
             VStack {
+                Text(String(timeCount)).hidden()
                 if filter.count > 1{
                     let start = filter.index(filter.startIndex, offsetBy: 6)
                     let end = filter.index(filter.endIndex, offsetBy: -1)
@@ -57,10 +60,18 @@ struct ProgressView: View {
                                 Spacer().frame(height: 8)
                                 
                                 Text(activities[index])
+                                let dif = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dates[index], to: Date.now)
+                                var duringTime = "\(dif.day ?? 0) dias \(dif.hour ?? 0) horas \(dif.minute ?? 0) minutos \(dif.second ?? 0) segundos"
+                                Text(duringTime)
+                                    .onReceive(timer) {_ in
+                                        let dif = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: dates[index], to: Date.now)
+                                        duringTime = "\(dif.day ?? 0) dias \(dif.hour ?? 0) horas \(dif.minute ?? 0) minutos \(dif.second ?? 0) segundos"
+                                        timeCount += 1
+                                    }
                                 
                                 HStack {
                                     Button("Concluir"){
-                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[0], to: Date.now)
+                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[index], to: Date.now)
                                         let endTime = "\(diffs.day ?? 0) dias \(diffs.hour ?? 0) horas \(diffs.minute ?? 0) minutos"
                                         completeTime.insert(String(endTime), at: 0)
                                         
@@ -70,7 +81,7 @@ struct ProgressView: View {
                                     }.foregroundColor(Color.green)
                                     
                                     Button("Desistir") {
-                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[0], to: Date.now)
+                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[index], to: Date.now)
                                         let endTime = "\(diffs.day ?? 0) dias \(diffs.hour ?? 0) horas \(diffs.minute ?? 0) minutos"
                                         withdrawalTime.insert(String(endTime), at: 0)
                                         
