@@ -8,13 +8,90 @@
 import SwiftUI
 
 struct ProgressView: View {
+    @Binding var activitie: Activities
+    @State var showPopUp = false
+    @Binding var activities: [String]
+    @Binding var dates: [Date]
+    @Binding var refresh: Bool
+    @Binding var filter: String
+    @Binding var tabSelection: Int
+    @Binding var withdrawalTime: [String]
+    @Binding var completeTime: [String]
+    @Binding var completeActivities: [String]
+    @Binding var withdrawalActivities: [String]
+    
     var body: some View{
-        Color.blue
+        ZStack{
+            VStack {
+                if filter.count > 1{
+                    let start = filter.index(filter.startIndex, offsetBy: 6)
+                    let end = filter.index(filter.endIndex, offsetBy: -1)
+                    let range = start...end
+                    let subFilter = String(filter[range])
+                    
+                    Text("Seu filtro de atividade atual é: \(subFilter)")
+                }
+                else {
+                    Text("Você não tem filtros ativos")
+                }
+                
+                HStack {
+                    Button("Gerar atividade"){
+                        activities.insert(activitie.activity, at: 0)
+                        dates.insert(Date.now, at: 0)
+                        refresh = true
+                        self.tabSelection = 0
+                    }
+                    Button("Alterar filtro") {
+                        showPopUp = true
+                    }
+                }
+                .buttonStyle(.bordered)
+
+                
+                Spacer().frame(height: 16)
+                ScrollView{
+                    VStack(spacing: 8){
+                        ForEach(0..<activities.count, id: \.self) { index in
+                            VStack {
+                                Spacer().frame(height: 8)
+                                
+                                Text(activities[index])
+                                
+                                HStack {
+                                    Button("Concluir"){
+                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[0], to: Date.now)
+                                        let endTime = "\(diffs.day ?? 0) dias \(diffs.hour ?? 0) horas \(diffs.minute ?? 0) minutos"
+                                        completeTime.insert(String(endTime), at: 0)
+                                        
+                                        completeActivities.insert(activities[index], at: 0)
+                                        
+                                        activities.removeFirst()
+                                    }.foregroundColor(Color.green)
+                                    
+                                    Button("Desistir") {
+                                        let diffs = Calendar.current.dateComponents([.day, .hour, .minute], from: dates[0], to: Date.now)
+                                        let endTime = "\(diffs.day ?? 0) dias \(diffs.hour ?? 0) horas \(diffs.minute ?? 0) minutos"
+                                        withdrawalTime.insert(String(endTime), at: 0)
+                                        
+                                        withdrawalActivities.insert(activities[index], at: 0)
+                                        
+                                        activities.removeFirst()
+                                    }.foregroundColor(Color.red)
+                                }.buttonStyle(.bordered)
+                                
+                                Spacer().frame(height: 8)
+                            }.frame(width: UIScreen.screenWidth)
+                                .background(Color.blue.opacity(0.05))
+                        }
+                    }
+                }
+                Spacer()
+            }
+            if showPopUp {
+                FilterSheet(showPopUp: $showPopUp, filter: $filter, tabSelection: $tabSelection, refresh: $refresh)
+            }
+        }
     }
 }
 
-struct ProgressView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressView()
-    }
-}

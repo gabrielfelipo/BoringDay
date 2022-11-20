@@ -14,9 +14,11 @@
 		CA62777F291EAF52005BEA18 /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62777E291EAF52005BEA18 /* CompleteView.swift */; };
 		CA627781291EAF7C005BEA18 /* WithdrawalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA627780291EAF7C005BEA18 /* WithdrawalView.swift */; };
 		CA627783291EAFC6005BEA18 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA627782291EAFC6005BEA18 /* ProgressView.swift */; };
+		CAA59A132929751E00EED2BC /* FilterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA59A122929751E00EED2BC /* FilterSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA084B812925498900C5F9F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CA62776C291E9B3F005BEA18 /* BoringDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoringDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA62776F291E9B3F005BEA18 /* BoringDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoringDayApp.swift; sourceTree = "<group>"; };
 		CA627771291E9B3F005BEA18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -25,6 +27,7 @@
 		CA62777E291EAF52005BEA18 /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
 		CA627780291EAF7C005BEA18 /* WithdrawalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalView.swift; sourceTree = "<group>"; };
 		CA627782291EAFC6005BEA18 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		CAA59A122929751E00EED2BC /* FilterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +60,10 @@
 		CA62776E291E9B3F005BEA18 /* BoringDay */ = {
 			isa = PBXGroup;
 			children = (
+				CA084B812925498900C5F9F7 /* Info.plist */,
 				CA62776F291E9B3F005BEA18 /* BoringDayApp.swift */,
 				CA627771291E9B3F005BEA18 /* ContentView.swift */,
+				CAA59A11292974F600EED2BC /* Sheets */,
 				CA62777D291EA782005BEA18 /* Views */,
 				CA627773291E9B3F005BEA18 /* Assets.xcassets */,
 				CA627775291E9B3F005BEA18 /* Preview Content */,
@@ -78,10 +83,18 @@
 			isa = PBXGroup;
 			children = (
 				CA62777E291EAF52005BEA18 /* CompleteView.swift */,
-				CA627780291EAF7C005BEA18 /* WithdrawalView.swift */,
 				CA627782291EAFC6005BEA18 /* ProgressView.swift */,
+				CA627780291EAF7C005BEA18 /* WithdrawalView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CAA59A11292974F600EED2BC /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				CAA59A122929751E00EED2BC /* FilterSheet.swift */,
+			);
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +172,7 @@
 				CA627783291EAFC6005BEA18 /* ProgressView.swift in Sources */,
 				CA627770291E9B3F005BEA18 /* BoringDayApp.swift in Sources */,
 				CA62777F291EAF52005BEA18 /* CompleteView.swift in Sources */,
+				CAA59A132929751E00EED2BC /* FilterSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +304,7 @@
 				DEVELOPMENT_TEAM = CMWHQAT5B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoringDay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -319,6 +334,7 @@
 				DEVELOPMENT_TEAM = CMWHQAT5B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoringDay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
