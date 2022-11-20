@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct CompleteView: View {
+    @Binding var activities: [String]
+    @Binding var completeTime: [String]
+    
     var body: some View{
-        Color.red
-    }
-}
-
-struct CompleteView_Previews: PreviewProvider {
-    static var previews: some View {
-        CompleteView()
+        VStack{
+            Text("Completas").font(.title)
+            ScrollView{
+                VStack(spacing: 8){
+                    ForEach(0..<activities.count, id: \.self) { index in
+                        VStack {
+                            Spacer().frame(height: 8)
+                            
+                            Text(activities[index])
+                            
+                            Text("Você completou em: \(completeTime[index])")
+                            
+                            Spacer().frame(height: 8)
+                        }.frame(width: UIScreen.screenWidth)
+                            .background(Color.blue.opacity(0.05))
+                    }
+                }
+            }
+        }
     }
 }
