@@ -1,0 +1,10 @@
+workflows:
+    boring-workflow:
+        name: Boring Pipeline
+        scripts:
+          - name: CICD Started
+            scripts: echo "Welcome to your CICD set up"
+        publishing:
+          email:
+            recipients:
+              - gabriel.felipo2010@gmail.com
