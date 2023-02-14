@@ -10,3 +10,4 @@ workflows:
               - gabriel.felipo2010@gmail.com
             notify:
               success: true
+              failure: true
