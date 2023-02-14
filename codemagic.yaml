@@ -8,3 +8,5 @@ workflows:
           email:
             recipients:
               - gabriel.felipo2010@gmail.com
+            notify:
+              success: true
